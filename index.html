@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
             <!-- Left-aligned Brand -->
-            <a class="navbar-brand" href="#">TARKOV CRAFT</a>
+            <a class="navbar-brand" href="#">塔科夫配方</a>
 
             <!-- Mobile Toggle Button -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,25 +32,25 @@
                     <!-- Dropdown Menu -->
                     <div class="dropdown me-2">
                         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="toolsDropdown" data-bs-toggle="dropdown" aria-expanded="false">
-                            Tools
+                            工具
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="toolsDropdown">
-                            <li><button class="dropdown-item" onclick="handleMongoId()">ID Generator</button></li>
-                            <li><button class="dropdown-item" onclick="hideQuestCreator()">Recipe Creator</button></li>
-                            <li><button class="dropdown-item" onclick="hideBarterCreator()">Barter Creator</button></li>
+                            <li><button class="dropdown-item" onclick="handleMongoId()">ID生成器</button></li>
+                            <li><button class="dropdown-item" onclick="hideQuestCreator()">配方生成器</button></li>
+                            <li><button class="dropdown-item" onclick="hideBarterCreator()">交易生成器</button></li>
                         </ul>
                     </div>
 
                     <!-- Other Buttons -->
                     <button class="btn btn-outline-secondary me-2" onclick="localStorage.clear(); location.reload();">
-                        Clear LocalStorage
+                        清除本地存储
                     </button>
 
                     <a class="btn btn-outline-secondary me-2" href="https://github.com/viniHNS/TarkovCraft/tree/main/mod" target="_blank">
-                        Server Mod
+                        服务器模组
                     </a>
                     <a class="btn btn-outline-secondary" href="https://hub.sp-tarkov.com/advertising-disclaimer/" target="_blank">
-                        SPT Disclaimer
+                        SPT声明
                     </a>
                 </div>
             </div>
@@ -62,15 +62,15 @@
             <div class="col-md-4">
                 <div class="card mt-3 bg-dark text">
                     <div class="card-header">
-                        <h5 class="card-title">Barters (WIP)</h5>
+                        <h5 class="card-title">交易（开发中）</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-group mb-0">
-                                    <input type="text" class="form-control" id="barterNameInput" placeholder="Barter name" aria-label="Barter Name">
+                                    <input type="text" class="form-control" id="barterNameInput" placeholder="交易名称" aria-label="交易名称">
                                     <button class="btn btn-outline-secondary" type="button" id="button-addon">
-                                        Add
+                                        添加
                                     </button>
                                 </div>
                             </div>
@@ -87,18 +87,18 @@
                 <div class="card mt-3 bg-dark text">
                     <div class="card-header">
                         <h5 class="card-title
-                        ">Create your Barter Trade</h5>
+                        ">创建交易</h5>
                     </div>
                     <div class="card-body pb-0">
                         <div class="row">
                             <div class="col-md-6">
-                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="Basics things">Basics</p>
+                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="基础设置">基础信息</p>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <select class="form-select ingredient-select" id="BartertraderSelect">
-                                    <option value="">Choose the trader</option>
+                                    <option value="">选择商人</option>
                                     <option value="54cb50c76803fa8b248b4571">Prapor</option>
                                     <option value="54cb57776803fa99248b456e">Therapist</option>
                                     <option value="579dc571d53a0658a154fbec">Fence</option>
@@ -112,7 +112,7 @@
                             </div>
                             <div class="col-md-4">
                                 <select class="form-select ingredient-select" id="BartertraderLoyalSelect">
-                                    <option value="">Choose the loyalty level</option>
+                                    <option value="">选择等级</option>
                                     <option value="1">I</option>
                                     <option value="2">II</option>
                                     <option value="3">III</option>
@@ -123,10 +123,10 @@
                         <hr class="mb-3">
                         <div class="row">
                             <div class="col-md-6">
-                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="Choose the Items">Items</p>
+                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="选择物品">物品</p>
                             </div>
                             <div class="col-md-6">
-                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="Some important values">General
+                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="重要参数">通用设置
                                 </p>
                             </div>
                         </div>
@@ -137,7 +137,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" id="itemQuantityInput1" placeholder="Item quantity" type="text">
+                                <input class="form-control" id="itemQuantityInput1" placeholder="物品数量" type="text">
                             </div>
                             <div class="col-md-6">
                                 <select class="form-select ingredient-select" id="finalItemInput">
@@ -152,18 +152,18 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" id="itemQuantityInput2" placeholder="Item quantity" type="text">
+                                <input class="form-control" id="itemQuantityInput2" placeholder="物品数量" type="text">
                             </div>
                             <div class="col-md-3">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="barterUnlimitedCheckBox">
                                     <label class="form-check-label" for="barterUnlimitedCheckBox">
-                                        Unlimited Count?
+                                        无限数量？
                                     </label>
                                 </div>
                             </div>
                             <div class="col-md-3">
-                                <input class="form-control" id="barterStackObjectsCount" placeholder="Stack Objects Count" type="text">
+                                <input class="form-control" id="barterStackObjectsCount" placeholder="堆叠物品数量" type="text">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -173,10 +173,10 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" id="itemQuantityInput3" placeholder="Item quantity" type="text">
+                                <input class="form-control" id="itemQuantityInput3" placeholder="物品数量" type="text">
                             </div>
                             <div class="col-md-3">
-                                <input class="form-control" id="barterBuyRestrictionNumber" placeholder="Buy Restriction Number" type="text">
+                                <input class="form-control" id="barterBuyRestrictionNumber" placeholder="购买限制数量" type="text">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -186,7 +186,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2">
-                                <input class="form-control" id="itemQuantityInput4" placeholder="Item quantity" type="text">
+                                <input class="form-control" id="itemQuantityInput4" placeholder="物品数量" type="text">
                             </div>
                         </div>
                         
@@ -205,7 +205,7 @@
         <div class="modal-dialog modal-lg">
             <div class="modal-content bg-dark text-white">
                 <div class="modal-header">
-                    <h5 class="modal-title">Generated Barter JSON</h5>
+                    <h5 class="modal-title">生成交易JSON</h5>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
@@ -226,15 +226,15 @@
             <div class="col-md-4">
                 <div class="card mt-3 bg-dark text">
                     <div class="card-header">
-                        <h5 class="card-title">Crafts (WIP)</h5>
+                        <h5 class="card-title">配方（开发中）</h5>
                     </div>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="input-group mb-0">
-                                    <input type="text" class="form-control" placeholder="Craft name" aria-label="Craft Name" id="craftNameInput">
+                                    <input type="text" class="form-control" placeholder="配方名称" aria-label="配方名称" id="craftNameInput">
                                     <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                                        Add
+                                        添加
                                     </button>
                                 </div>
                             </div>
@@ -252,13 +252,13 @@
                 <div class="card mt-3 bg-dark text">
                     <div class="card-header">
                         <h5 class="card-title
-                        ">Create a Craft recipe</h5>
+                        ">创建配方</h5>
                     </div>
                     <div class="card-body pb-0">
                         <div class="row">
                             <div class="col-md-9">
                                 <p data-bs-toggle="tooltip" data-bs-placement="left" title="Choose the Ingredients">
-                                    Ingredients</p>
+                                    原料</p>
                             </div>
                             <div class="col-md-3">
                                 <p data-bs-toggle="tooltip" data-bs-placement="left" title="Choose the Amount of Ingredients">Amount</p>
@@ -274,7 +274,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="ingredientAmountInput1" placeholder="How many?" type="number">
+                                    <input class="form-control" id="ingredientAmountInput1" placeholder="数量？" type="number">
                                 </div>
                             </div>
 
@@ -286,7 +286,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="ingredientAmountInput2" placeholder="How many?" type="number">
+                                    <input class="form-control" id="ingredientAmountInput2" placeholder="数量？" type="number">
                                 </div>
                             </div>
 
@@ -298,7 +298,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="ingredientAmountInput3" placeholder="How many?" type="number">
+                                    <input class="form-control" id="ingredientAmountInput3" placeholder="数量？" type="number">
                                 </div>
                             </div>
 
@@ -310,7 +310,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="ingredientAmountInput4" placeholder="How many?" type="number">
+                                    <input class="form-control" id="ingredientAmountInput4" placeholder="数量？" type="number">
                                 </div>
                             </div>
                         </div>
@@ -319,10 +319,10 @@
 
                         <div class="row">
                             <div class="col-md-6">
-                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="Choose the Tools (If empty, it will be a craft without tools)">Tools</p>
+                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="选择工具（如果留空则为无工具配方）">工具</p>
                             </div>
                             <div class="col-md-6">
-                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="Some important values">Misc.
+                                <p data-bs-toggle="tooltip" data-bs-placement="left" title="重要参数">杂项
                                 </p>
                             </div>
                         </div>
@@ -348,10 +348,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="craftTimeInput" placeholder="Time to craft" data-bs-toggle="tooltip" data-bs-placement="left" title="In minutes" type="number">
+                                    <input class="form-control" id="craftTimeInput" placeholder="制作时间" data-bs-toggle="tooltip" data-bs-placement="left" title="单位：分钟" type="number">
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="form-select tool-select" id="HideoutAreaInput">
+                                    <select class="form-select tool-select" id="HideoutAreaInput" data-bs-toggle="tooltip" data-bs-placement="left" title="选择藏身处区域">
                                         <option></option>
                                     </select>
                                 </div>
@@ -364,10 +364,10 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="endProductCountInput" placeholder="Amount of end product" type="number">
+                                    <input class="form-control" id="endProductCountInput" placeholder="成品数量" type="number">
                                 </div>
                                 <div class="col-md-3">
-                                    <input class="form-control" id="hideoutLevelInput" placeholder="Hideout Area LVL" type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="Keep in mind, hideout areas have a maximum level.">
+                                    <input class="form-control" id="hideoutLevelInput" placeholder="藏身处等级" type="number" data-bs-toggle="tooltip" data-bs-placement="top" title="请注意藏身处区域有最大等级限制">
                                 </div>
                             </div>
                         </div>
@@ -382,7 +382,7 @@
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content bg-dark text-white">
                                     <div class="modal-header">
-                                        <h5 class="modal-title">Generated Recipe JSON</h5>
+                                        <h5 class="modal-title">生成的配方JSON</h5>
                                         <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
                                     </div>
                                     <div class="modal-body">
@@ -406,8 +406,7 @@
         <!-- Grid container -->
         <div class="container-fluid p-1" style="background-color: #14141433;">
             <div class="row align-items-center">
-                <p class="text text-center m-0 p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="All the information is provided by Tarkov.DEV API">The database is stored using
-                    localStorage.</p>
+                <p class="text text-center m-0 p-1" data-bs-toggle="tooltip" data-bs-placement="top" title="所有信息由Tarkov.DEV API提供">数据库使用localStorage存储。</p>
             </div>
 
         </div>
@@ -417,19 +416,19 @@
                     <p class="text text-center m-0">© 2025 - Tarkov Craft - Made by ViniHNS</a>
                 </div>
                 <div class="col-md-4">
-                    <p class="text text-center m-0"> Made with <a class="text-center m-0 text-decoration-none" href="http://www.aka.ms/confidential" target="_blank"><i class="fa-solid fa-heart" aria-hidden="true" style="color: red;"></i></a></p>
+                    <p class="text text-center m-0"> 使用 <a class="text-center m-0 text-decoration-none" href="http://www.aka.ms/confidential" target="_blank"><i class="fa-solid fa-heart" aria-hidden="true" style="color: red;"></i></a> 制作</p>
                 </div>
                 <div class="col-md-4">
                     <!-- Github -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/viniHNS" target="_blank" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="GitHub">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://github.com/viniHNS" target="_blank" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="GitHub仓库">
                         <i class="fab fa-github"></i>
                     </a>
                     <!-- Discord -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="javascript:void(0);" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Click to copy my Discord username" onclick="copyDiscordUsername()">
+                    <a class="btn btn-outline-light btn-floating m-1" href="javascript:void(0);" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="点击复制我的Discord用户名" onclick="copyDiscordUsername()">
                         <i class="fab fa-discord"></i>
                     </a>
                     <!-- Buy me a Coffee -->
-                    <a class="btn btn-outline-light btn-floating m-1" href="https://ko-fi.com/vinihns" target="_blank" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="Support me!">
+                    <a class="btn btn-outline-light btn-floating m-1" href="https://ko-fi.com/vinihns" target="_blank" role="button" data-bs-toggle="tooltip" data-bs-placement="top" title="支持我！">
                         <i class="fas fa-coffee"></i>
                     </a>
                 </div>

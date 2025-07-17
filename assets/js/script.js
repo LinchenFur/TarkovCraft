@@ -1,5 +1,5 @@
-console.log('%cWarning! Proceed with Caution!', 'color: red; font-size: 30px; font-weight: bold;');
-console.log('%cMessing with the console could result in Tagilla visiting you tonight!', 'color: red; font-size: 16px;');
+console.log('%c警告！请谨慎操作！', 'color: red; font-size: 30px; font-weight: bold;');
+console.log('%c乱动控制台可能导致今晚Tagilla来拜访你！', 'color: red; font-size: 16px;');
 
 
 function copyDiscordUsername() {
@@ -42,7 +42,7 @@ function handleMongoId() {
 function initializeQuestSelect2(quests) {
     $('#questLock1').select2({
         theme: 'bootstrap-5',
-        placeholder: 'Select a quest...',
+        placeholder: '选择任务...',
         data: quests.map(quest => ({
             id: quest.id,
             text: quest.name
@@ -57,7 +57,7 @@ function initializeAllSelect2(items) {
     // Common configuration for item selects
     const itemSelectConfig = {
         theme: 'bootstrap-5',
-        placeholder: 'Search item...',
+        placeholder: '搜索物品...',
         data: items.map(item => ({
             id: item.id,
             text: `${item.name} (${item.id})`
@@ -74,7 +74,7 @@ function initializeAllSelect2(items) {
     // Final product select
     $('#finalProductInput').select2({
         ...itemSelectConfig,
-        placeholder: 'Select final product...'
+        placeholder: '选择最终产品...'
     });
 
 
@@ -116,7 +116,7 @@ function initializeAllSelect2(items) {
     // Hideout area select
     $('#HideoutAreaInput').select2({
         theme: 'bootstrap-5',
-        placeholder: 'Hideout Area',
+        placeholder: '藏身处区域',
         data: [
             { id: '2', text: 'LAVATORY' },
             { id: '6', text: 'WATER COLLECTOR' },
@@ -152,7 +152,7 @@ function generateQuestJson() {
     const questId = generateObjectId();
 
     let questType = $('#taskTypeSelect').val();
-    if (questType === 'CounterCreator') {
+    if (questType === '击杀任务') {
         questType = 'Elimination';
     }
 
@@ -191,7 +191,7 @@ function generateQuestJson() {
             "startedMessageText": questId + " startedMessageText", // Will be replaced in locales
             "status": 0,
             "successMessageText": questId + " successMessageText", // Will be replaced in locales
-            "traderId": $("#traderSelect").val(),
+            "traderId": $("#traderSelect").val().replace('商人 ', ''),
             "type": questType
         }
     };
@@ -492,6 +492,8 @@ function generateStartConditions() {
 }
 
 // Event Listeners
+$('#generateQuestJson').text('生成任务JSON');
+$('#generateQuestJson').text('生成任务JSON');
 $('#generateQuestJson').click(() => {
     const quest = generateQuestJson();
     if (!quest) return;
@@ -504,14 +506,18 @@ $('#generateQuestJson').click(() => {
 });
 
 // Funções de cópia
+$('#copyQuestJson').text('复制任务JSON');
+$('#copyQuestJson').text('复制任务JSON');
 $('#copyQuestJson').click(() => {
     navigator.clipboard.writeText($('#jsonQuestOutput').text());
-    showToast('Quest JSON copied!', 'success');
+    showToast('任务JSON已复制！', 'success');
 });
 
+$('#copyLocalesJson').text('复制本地化JSON');
+$('#copyLocalesJson').text('复制本地化JSON');
 $('#copyLocalesJson').click(() => {
     navigator.clipboard.writeText($('#jsonLocalesOutput').text());
-    showToast('Locales JSON copied!', 'success');
+    showToast('本地化JSON已复制！', 'success');
 });
 
 
@@ -578,7 +584,7 @@ function generateRecipeJson() {
 
         if (itemId) {
             if (!count || isNaN(count) || parseInt(count) <= 0) {
-                showToast(`Please enter valid amount for ingredient #${i}`);
+                showToast(`请输入有效的第${i}个材料数量`);
                 return null;
             }
             hasIngredients = true;
@@ -586,31 +592,31 @@ function generateRecipeJson() {
     }
 
     if (!hasIngredients) {
-        showToast('Please add at least one ingredient');
+        showToast('请至少添加一个材料');
         return null;
     }
 
     if (!recipe.endProduct) {
-        showToast('Please select a final product!');
+        showToast('请选择最终产品！');
         return null;
     }
 
     if (recipe.productionTime <= 0) {
-        showToast('Please enter valid production time!');
+        showToast('请输入有效的生产时间！');
         return null;
     }
 
     // Validate Hideout Area selection
     const selectedArea = $('#HideoutAreaInput').val();
     if (!selectedArea || isNaN(selectedArea)) {
-        showToast('Please select a valid Hideout Area');
+        showToast('请选择有效的藏身处区域');
         return null;
     }
 
     // Validate end product count
     const endProductCount = parseInt($('#endProductCountInput').val());
     if (isNaN(endProductCount) || endProductCount < 1) {
-        showToast('End product count must be at least 1');
+        showToast('最终产品数量必须至少为1');
         return null;
     }
 
@@ -621,14 +627,14 @@ function generateBarterJson() {
     // Get trader ID and validate
     const traderId = $('#BartertraderSelect').val();
     if (!traderId) {
-        showToast('Please select a trader!', 'warning');
+        showToast('请选择商人！', 'warning');
         return null;
     }
 
     // Get loyalty level and validate
     const loyaltyLevel = parseInt($('#BartertraderLoyalSelect').val());
     if (!loyaltyLevel) {
-        showToast('Please select a trader loyalty level!', 'warning');
+        showToast('请选择商人忠诚度等级！', 'warning');
         return null;
     }
 
@@ -689,9 +695,11 @@ function generateBarterJson() {
     return barterData;
 }
 
+$('#generateBarterJson').text('生成易货JSON');
+$('#generateBarterJson').text('生成易货JSON');
 $('#generateBarterJson').click(() => {
     if (barters.length === 0) {
-        showToast('No barters to generate!', 'warning');
+        showToast('没有可生成的易货交易！', 'warning');
         return;
     }
     
@@ -736,9 +744,11 @@ $('#button-addon').click(() => {
     addBarter();
 });
 
+$('#copyBarterJson').text('复制易货JSON');
+$('#copyBarterJson').text('复制易货JSON');
 $('#copyBarterJson').click(() => {
     if (barters.length === 0) {
-        showToast('No barters to copy!', 'warning');
+        showToast('没有可复制的易货交易！', 'warning');
         return;
     }
     
@@ -747,15 +757,17 @@ $('#copyBarterJson').click(() => {
 });
 
 $('.wip').click(() => {
-    showToast('This feature is not yet implemented', 'warning');
+    showToast('此功能尚未实现', 'warning');
 })
 
 $('#button-addon2').off('click').click(addCraft);
 
 // Modal and clipboard functionality
+$('#generateJson').text('生成制作配方JSON');
+$('#generateJson').text('生成制作配方JSON');
 $('#generateJson').click(() => {
     if (crafts.length === 0) {
-        showToast('No crafts to generate!', 'warning');
+        showToast('没有可生成的制作配方！', 'warning');
         return;
     }
     const cleanCrafts = crafts.map(({ displayName, ...rest }) => rest);
@@ -774,9 +786,11 @@ $('#TraderStandingInput1').on('input', function () {
     $(this).val(value);
 });
 
+$('#copyJson').text('复制制作配方JSON');
+$('#copyJson').text('复制制作配方JSON');
 $('#copyJson').click(() => {
     if (crafts.length === 0) {
-        showToast('No crafts to copy!', 'warning');
+        showToast('没有可复制的制作配方！', 'warning');
         return;
     }
 
@@ -799,7 +813,7 @@ function showToast(message, type = 'danger') {
 
 // Data loading and initialization
 async function fetchData() {
-    const query = `{ items(lang: en) { id name } }`;
+    const query = `{ items(lang: ch) { id name } }`;
     try {
         const response = await fetch('https://api.tarkov.dev/graphql', {
             method: 'POST',
@@ -815,14 +829,14 @@ async function fetchData() {
         return data.data.items;
     } catch (error) {
         console.error('API Error:', error);
-        showToast('Failed to fetch data from API', 'danger');
+        showToast('从API获取数据失败', 'danger');
         return [];
     }
 }
 
 async function fetchQuestData() {
     const query = `{
-        tasks(lang: en) {
+        tasks(lang: ch) {
             id
             name
         }
@@ -843,7 +857,7 @@ async function fetchQuestData() {
         return data.data.tasks;
     } catch (error) {
         console.error('API Error:', error);
-        showToast('Failed to fetch quests data from API', 'danger');
+        showToast('从API获取任务数据失败', 'danger');
         return [];
     }
 }
@@ -871,12 +885,12 @@ async function loadQuestData() {
         if (quests.length) {
             initializeQuestSelect2(quests);
         } else {
-            showToast('No quests available', 'warning');
+            showToast('没有可用的任务', 'warning');
         }
 
     } catch (error) {
         console.error('Quest Load Error:', error);
-        showToast('Failed to load quests', 'danger');
+        showToast('加载任务失败', 'danger');
     }
 }
 
@@ -904,14 +918,14 @@ async function loadData() {
         }
     } catch (error) {
         console.error('Load Error:', error);
-        showToast('Failed to load data!', 'danger');
+        showToast('加载数据失败！', 'danger');
     }
 }
 
 function initializeBarterSelects(items) {
     const selectConfig = {
         theme: 'bootstrap-5',
-        placeholder: 'Search item...',
+        placeholder: '搜索物品...',
         data: items.map(item => ({
             id: item.id,
             text: `${item.name} (${item.id})`
@@ -928,7 +942,7 @@ function initializeBarterSelects(items) {
     // Initialize final item input with same config but different placeholder
     $('#finalItemInput').select2({
         ...selectConfig,
-        placeholder: 'Select final item...'
+        placeholder: '搜索物品...'
     });
 }
 
@@ -941,7 +955,7 @@ let barters = [];
 function addBarter() {
     const barterJson = generateBarterJson();
     if (!barterJson) {
-        showToast('Failed to generate barter!', 'warning');
+        showToast('无法生成易货交易！', 'warning');
         return;
     }
 
@@ -954,7 +968,7 @@ function addBarter() {
     barters.push(barterJson);
     updateBartersList();
     resetBarterForm();
-    showToast('Barter added successfully!', 'success');
+    showToast('交易添加成功！', 'success');
 }
 
 function resetBarterForm() {
@@ -1053,7 +1067,7 @@ let rewardIndex = 1;
 // Função para adicionar nova recompensa
 function addRewardRow() {
     if (items.length === 0) {
-        showToast('Items data not loaded yet!', 'warning');
+        showToast('物品数据尚未加载！', 'warning');
         return;
     }
 
@@ -1171,6 +1185,8 @@ $(document).ready(async () => {
         });
     }
 
+    $('#addQuestTask').text('添加任务目标');
+    $('#addQuestTask').text('添加任务目标');
     $('#addQuestTask').click(function () {
         const taskType = $('#taskTypeSelect').val();
 
@@ -1187,7 +1203,7 @@ $(document).ready(async () => {
 
             $('.kill-tasks-container').append(clone);
         } else {
-            showToast('Select "Counter Creator" first!', 'warning');
+            showToast('请先选择"Counter Creator"任务类型！', 'warning');
         }
     });
 
@@ -1216,18 +1232,22 @@ $(document).ready(async () => {
     });
 
     // Level lock check handler 
+    $('label[for="levelLockCheck"]').text('等级锁定');
+    $('label[for="levelLockCheck"]').text('等级锁定');
     $(document).on('change', '[id="levelLockCheck"]', function() {
         const $input = $(this).closest('.quest-general').find('[id="levelLockInput"]');
         $input.prop('disabled', !this.checked);
     });
 
     // Quest lock check handler
+    $('label[for="questLockCheck"]').text('任务前置');
+    $('label[for="questLockCheck"]').text('任务前置');
     $(document).on('change', '[id="questLockCheck"]', function () {
         const $select = $(this).closest('.quest-general').find('[id="questLock"]');
         if (this.checked) {
             $select.prop('disabled', false).select2({
                 theme: 'bootstrap-5',
-                placeholder: 'Select a quest...',
+                placeholder: '选择任务...',
                 data: quests.map(quest => ({
                     id: quest.id,
                     text: quest.name
