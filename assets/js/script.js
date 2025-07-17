@@ -869,11 +869,11 @@ async function loadQuestData() {
 
         if (cachedData) {
             quests = JSON.parse(cachedData);
-            console.log('Loaded quests from cache:', quests.length);
+            console.log('从缓存加载的任务:', quests.length);
         }
 
         if (!quests.length) {
-            showToast('Fetching quests data...', 'info');
+            showToast('加载任务数据...', 'info');
             quests = await fetchQuestData();
 
             if (quests.length) {
@@ -900,13 +900,13 @@ async function loadData() {
 
         if (cachedData) {
             items = JSON.parse(cachedData);
-            console.log('Loaded from cache:', items.length, 'items');
+            console.log('从缓存加载:', items.length, 'items');
             initializeAllSelect2(items);
             initializeBarterSelects(items); // Add this line
         }
 
         if (!items.length) {
-            showToast('Fetching latest data...', 'info');
+            showToast('正在获取最新数据...', 'info');
             items = await fetchData();
 
             if (items.length) {
