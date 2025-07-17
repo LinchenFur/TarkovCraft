@@ -813,7 +813,7 @@ function showToast(message, type = 'danger') {
 
 // Data loading and initialization
 async function fetchData() {
-    const query = `{ items(lang: ch) { id name } }`;
+    const query = `{ items(lang: zh) { id name } }`;
     try {
         const response = await fetch('https://api.tarkov.dev/graphql', {
             method: 'POST',
@@ -836,7 +836,7 @@ async function fetchData() {
 
 async function fetchQuestData() {
     const query = `{
-        tasks(lang: ch) {
+        tasks(lang: zh) {
             id
             name
         }
@@ -955,7 +955,7 @@ let barters = [];
 function addBarter() {
     const barterJson = generateBarterJson();
     if (!barterJson) {
-        showToast('无法生成易货交易！', 'warning');
+        showToast('无法生成交易！', 'warning');
         return;
     }
 
